@@ -22,7 +22,10 @@ export class UniversityListComponent {
       .subscribe(data => {
         this.universities = data;
         this.loading = !this.loading;
-      });
+      }, error => {
+        this.loading = !this.loading;
+        alert("Error occured, try another time.");
+      }, () => this.loading = !this.loading);
 
   }
 
