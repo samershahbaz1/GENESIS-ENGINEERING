@@ -1,0 +1,38 @@
+<div>
+    Country Name <input type="text" #countryName (keyup)="onChange($event)" />
+    @if(loading){
+    <i>wait, loading...</i>
+    }
+    @else{
+    <i>press enter to go</i>
+    }
+</div>
+
+@if(universities){
+<h2>List of Universities in Pakistan</h2>
+}
+<div>
+    @for (university of universities; track $index) {
+    <div>
+        <h3 (click)="toggleDetails(university)">
+            @if(university.showDetails){
+            <span>-</span>
+            }
+            @else{
+            <span>+</span>
+            } 
+
+            {{ university.name }}
+        </h3>
+        @if (university.showDetails) {
+        <div>
+            <p>Domains: {{ university.domains }}</p>
+            <p>Country Code: {{ university.alpha_Two_Code }}</p>
+            <p>Web Pages: <a href="{{ university.web_Pages[0] }}" target="_blank">{{ university.web_Pages[0] }}</a></p>
+            <p>State / Province: {{ university.state_Province }}</p>
+            <p>Country: {{ university.country }}</p>
+        </div>
+        }
+    </div>
+    }
+</div>
