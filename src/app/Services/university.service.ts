@@ -13,4 +13,8 @@ export class UniversityService {
   getUniversitiesByCountry(country: string) {
     return this.http.get<University[]>(`${this.apiUrl}/Universities/${country}`);
   }
+
+  getUniversitiesByCountryByCountryAndProvince(country: string, province:string) {
+    return this.http.get<University[]>(`${this.apiUrl}/Universities/${country}/${province}`);
+  }
 }

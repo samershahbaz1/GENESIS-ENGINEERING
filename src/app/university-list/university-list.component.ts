@@ -26,10 +26,22 @@ export class UniversityListComponent {
 
   }
 
-  onChange(event: any) {
+  getUniversitiesByCountryAndPronvince(countryName: string, province: string) {
+    this.universityService.getUniversitiesByCountryByCountryAndProvince(countryName, province)
+      .subscribe(data => {
+        this.universities = data;
+        this.loading = !this.loading;
+      }, error => {
+        this.loading = !this.loading;
+        alert("Error occured, try another time.");
+      }, () => this.loading = !this.loading);
+
+  }
+
+  onChange(event: any, country: string, province: string) {
     if (event.keyCode == 13) {
       this.loading = !this.loading;
-      this.getUniversities(event.target.value);
+      this.getUniversitiesByCountryAndPronvince(country, province);
     }
   }
 

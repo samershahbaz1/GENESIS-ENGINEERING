@@ -1,5 +1,7 @@
 <div>
-    Country Name <input type="text" #countryName (keyup)="onChange($event)" />
+    Country Name <input type="text" #countryName />
+    <br />
+    Province Name <input type="text" #province (keyup)="onChange($event, countryName.value, province.value)" />
     @if(loading){
     <i>wait, loading...</i>
     }
